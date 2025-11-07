@@ -7,7 +7,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="../../dist/css/pango.css">
+       <link rel="stylesheet" href="../../dist/css/pango.css">
         <link rel="stylesheet" href="../../dist/css/styles.css">
         <link rel="stylesheet" href="../../dist/css/bootstrap.css">
         <link rel="stylesheet" href="../../dist/css/responsive.css">
@@ -17,7 +17,14 @@
     </head>
 
     <style>
-        /* Import Font */
+        :root {
+      --pango-green: #0C6B37; /* your site green */
+    }
+.body{
+    padding-top: 700px;
+}
+
+   /* Import Font */
 
         @font-face {
             font-family: Gilmer;
@@ -29,42 +36,82 @@
         .gilmer {
             font-family: Gilmer !important;
         }
+          /* Navbar styling */
+    .navbar {
+      background-color: var(--pango-green);
+      z-index: 1030;
+      
+    }
+    .navbar .navbar-brand img { height: 40px; }
+    .navbar .nav-link { color: #fff; }
+    .navbar .nav-link:hover { background: rgba(255,255,255,0.06); }
+
+    /* Make the toggler icon visible on dark background (if using default icon) */
+    .navbar-toggler { border: none; }
+    .navbar-toggler-icon { filter: invert(1); }
+
+    /* IMPORTANT: Force vertical stacking for collapsed navbar-nav on small screens.
+       Bootstrap's .navbar-nav is a flex container; here we change its direction to column
+       when the collapse is used (<= lg breakpoint). */
+    @media (max-width: 991.98px) {
+      .navbar-collapse .navbar-nav {
+        flex-direction: column !important;
+        width: 100%;
+      }
+
+      /* Give the collapsed menu a matching background so items are readable */
+      .navbar-collapse {
+        background-color: var(--pango-green);
+        padding-bottom: 0.75rem;
+        
+      }
+      
+
+      /* Make links fill width and have comfortable vertical spacing */
+      .navbar-nav .nav-item { text-align: center; }
+      .navbar-nav .nav-link {
+        padding: 0.625rem 1rem;
+        width: 100%;
+      }
+    }
+
+    /* Desktop layout keeps horizontal menu */
+    @media (min-width: 992px) {
+      .navbar-collapse { background: none !important; padding: 0; }
+      .navbar-nav .nav-link { padding: .5rem 1rem;}
+    }
     </style>
-
     <body onload="loadScrollReveal()" style="font-family: 'Inter', sans-serif;">
-          
-
-        <div class="container-fluid p-0">
-            <div class="container-fluid text-light screens contact-screen p-0">
-                <div class="overlays overlay-main"></div>
-            <!-- NAVBAR -->
-  <header class="bg-success">
-    <nav class="navbar navbar-expand-lg navbar-dark container py-2">
-      <a class="navbar-brand d-flex align-items-center" href="#">
-        <img loading="lazy" src="../../assets/img/icon/logo-all-white.png" alt="The Pangolins Icon"
+           <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" >
+    <div class="container">
+      <a class="navbar-brand" href="../../index.html">
+       <img loading="lazy" src="../../assets/img/icon/logo-all-white.png" alt="The Pangolins Icon"
                                 width="120">
       </a>
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-        <span class="navbar-toggler-icon"></span>
+
+      <!-- Using a simple button with a Bootstrap Icon (bi-list) -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav-bar"
+        aria-controls="main-nav-bar" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list fs-2 text-white"></i>
       </button>
 
-      <div class="collapse navbar-collapse" id="mainNav">
+      <div class="collapse navbar-collapse justify-content-end" id="main-nav-bar">
         <ul class="navbar-nav ms-auto fw-semibold">
-          <li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown">About</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Who we are</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link text-white" href="#">Services</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="#">Events</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="#">Forms</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="#">Contact Us</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="../../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="./services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="./about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="./contact.html">Contact</a></li>
         </ul>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
+
+        <div class="container-fluid p-0">
+            <!-- <div class="container-fluid text-light screens contact-screen p-0">
+                <div class="overlays overlay-main"></div>
+           
+ 
 
 
                 <div class="container py-4">
@@ -72,7 +119,7 @@
                         <h1 class="fw-bold display-1" data-scroll-reveal>Our Contacts</h1>
                     </span>
                 </div>
-            </div>
+            </div> -->
 
             <div class="container-fluid bg-light" id="team">
                 <div class="container">
@@ -187,10 +234,18 @@
                                 School. Explore the map for easy directions to
                                 our office.
                             </p>
-                        </div>
-                        <img src="../../assets/img/picture/map.png" alt="Map to The Pangolins Office"
-                            class="contact-map py-3 mb-5" width="100%" data-scroll-reveal>
-                    </div>
+                        </div><div class="container my-4">
+  <h3 class="text-center mb-3">Find Us Here</h3>
+  <div class="ratio ratio-16x9">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1344.4491598050759!2d34.98266335791686!3d-15.779581052805968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18d844ef4652d86b%3A0xeac4b0f1399b1bb0!2sChilomoni%2C%20Blantyre!5e0!3m2!1sen!2smw!4v1762510379339!5m2!1sen!2smw" 
+    width="600"
+    height="450" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</div>
                 </div>
             </div>
 
@@ -283,11 +338,12 @@
             </div>
         </div>
 
-        <script src="../../dist/js/index.js"></script>
+         <script src="../../dist/js/index.js"></script>
         <script src="../../dist/js/script.js"></script>
+        <script src="../../dist/js/papaparse.js"></script>
         <script src="../../dist/js/scrollReveal.js"></script>
         <script src="../../dist/js/bootstrap.bundle.js"></script>
-          <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> -->
+         
     </body>
 
 </html>

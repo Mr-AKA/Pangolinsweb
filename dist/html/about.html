@@ -16,8 +16,37 @@
         <link rel="shortcut icon" href="../../assets/img/favicon/favicon.png" type="image/x-icon">
     </head>
 
-    <style>
-        /* Import Font */
+     <style>
+         .partners-section {
+      padding: 60px 0;
+      background-color: #f9f9f9;
+    }
+    .partner-item {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      background-color: #fff;
+      transition: box-shadow 0.3s ease;
+    }
+    .partner-item:hover {
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .partner-logo {
+      max-width: 120px;
+      height: auto;
+    }
+    .partner-name {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+        :root {
+      --pango-green: #0C6B37; /* your site green */
+    }
+.body{
+    padding-top: 700px;
+}
+
+   /* Import Font */
 
         @font-face {
             font-family: Gilmer;
@@ -29,45 +58,84 @@
         .gilmer {
             font-family: Gilmer !important;
         }
+          /* Navbar styling */
+    .navbar {
+      background-color: var(--pango-green);
+      z-index: 1030;
+      
+    }
+    .navbar .navbar-brand img { height: 40px; }
+    .navbar .nav-link { color: #fff; }
+    .navbar .nav-link:hover { background: rgba(255,255,255,0.06); }
+
+    /* Make the toggler icon visible on dark background (if using default icon) */
+    .navbar-toggler { border: none; }
+    .navbar-toggler-icon { filter: invert(1); }
+
+    /* IMPORTANT: Force vertical stacking for collapsed navbar-nav on small screens.
+       Bootstrap's .navbar-nav is a flex container; here we change its direction to column
+       when the collapse is used (<= lg breakpoint). */
+    @media (max-width: 991.98px) {
+      .navbar-collapse .navbar-nav {
+        flex-direction: column !important;
+        width: 100%;
+      }
+
+      /* Give the collapsed menu a matching background so items are readable */
+      .navbar-collapse {
+        background-color: var(--pango-green);
+        padding-bottom: 0.75rem;
+        
+      }
+      
+
+      /* Make links fill width and have comfortable vertical spacing */
+      .navbar-nav .nav-item { text-align: center; }
+      .navbar-nav .nav-link {
+        padding: 0.625rem 1rem;
+        width: 100%;
+      }
+    }
+
+    /* Desktop layout keeps horizontal menu */
+    @media (min-width: 992px) {
+      .navbar-collapse { background: none !important; padding: 0; }
+      .navbar-nav .nav-link { padding: .5rem 1rem;}
+    }
     </style>
 
     <body onload="loadScrollReveal(), getTeam()">
+               <!-- NAVBAR-->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" >
+    <div class="container">
+      <a class="navbar-brand" href="../../index.html">
+       <img loading="lazy" src="../../assets/img/icon/logo-all-white.png" alt="The Pangolins Icon"
+                                width="120">
+      </a>
 
+      <!-- Using a simple button with a Bootstrap Icon (bi-list) -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav-bar"
+        aria-controls="main-nav-bar" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list fs-2 text-white"></i>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="main-nav-bar">
+        <ul class="navbar-nav ms-auto fw-semibold">
+          <li class="nav-item"><a class="nav-link text-white" href="../../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="./services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="./about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="./contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
         <div class="container-fluid p-0">
             <div class="container-fluid text-light screens about-screen p-0">
                 <div class="overlays overlay-main"></div>
-                <nav class="navbar navbar-expand-lg p-0" aria-label="Navigation Bar">
-                    <div class="container py-3">
-                        <a class="navbar-brand p-0" href="../../index.html">
-                            <img loading="lazy" src="../../assets/img/icon/logo-all-white.png" alt="The Pangolins Icon"
-                                width="120">
-                        </a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#main-nav-bar" aria-controls="main-nav-bar" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <i class="bi bi-list text-light fs-1"></i>
-                        </button>
 
-                        <div class="collapse navbar-collapse" id="main-nav-bar">
-                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a class="main-link" aria-current="page" href="../../index.html">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="main-link" href="./services.html">Services</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="main-link active" href="./about.html">About</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="main-link" href="./contact.html">Contacts</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <div class="container py-4">
-                    <span class="pb-3 mb-4 align-items-center justify-content-center">
+ 
+                <div class="container py-5">
+                    <span class="pb-1 mb-1 align-items-center justify-content-center">
                         <h1 class="fw-bold display-1" data-scroll-reveal>About Us</h1>
                     </span>
                 </div>
@@ -140,7 +208,7 @@
                     </div>
                 </div>
             </div>
-
+<!-- TEAM SECTION-->
             <div class="container-fluid bg-light" id="team">
                 <div class="container">
 
@@ -156,11 +224,102 @@
                             <div class="team-member col-md-4 col-sm-6 mb-5" data-scroll-reveal>
                                 <img src="../../assets/img/images/png/loading.gif" loading="lazy" class="p-5 rounded-circle mb-3" role="img" alt="Loading">
                             </div>
+                             
                         </span>
                     </div>
 
                 </div>
             </div>
+ 
+           <!-- Partners & Collaborators -->
+            <section class="partners-section text-center">
+  <div class="container">
+    <h2 class="mb-5 fw-bold">Partners & Collaborators</h2>
+    <div class="row gy-4">
+
+      <!-- Partner 1 -->
+      <div class="col-md-6">
+        <div class="d-flex align-items-center justify-content-between partner-item">
+          <div class="partner-name text-start">
+            Malawi University of Business and Applied Sciences (MUBAS)
+          </div>
+          <img src="../../assets/img/icon/icon.png" alt="MUBAS Logo" class="partner-logo">
+        </div>
+      </div>
+
+      <!-- Partner 2 -->
+      <div class="col-md-6">
+        <div class="d-flex align-items-center justify-content-between partner-item">
+          <div class="partner-name text-start">
+            EU Zantchito
+          </div>
+         <img src="../../assets/img/icon/icon.png" alt="MUBAS Logo" class="partner-logo">
+        </div>
+      </div>
+
+      <!-- Partner 3 -->
+      <div class="col-md-6">
+        <div class="d-flex align-items-center justify-content-between partner-item">
+          <div class="partner-name text-start">
+            Technical and Vocational and Entrepreneurial Training Authority (TEVETA)
+          </div>
+          <img src="../../assets/img/icon/icon.png" alt="MUBAS Logo" class="partner-logo">
+        </div>
+      </div>
+
+      <!-- Partner 4 -->
+      <div class="col-md-6">
+        <div class="d-flex align-items-center justify-content-between partner-item">
+          <div class="partner-name text-start">
+            PPDA
+          </div>
+          <img src="../../assets/img/icon/icon.png" alt="MUBAS Logo" class="partner-logo">
+        </div>
+      </div>
+
+      <!-- Partner 5 -->
+      <div class="col-md-6">
+        <div class="d-flex align-items-center justify-content-between partner-item">
+          <div class="partner-name text-start">
+            Amaryllis
+          </div>
+         <img src="../../assets/img/icon/icon.png" alt="MUBAS Logo" class="partner-logo">
+        </div>
+      </div>
+
+      <!-- Partner 6 -->
+      <div class="col-md-6">
+        <div class="d-flex align-items-center justify-content-between partner-item">
+          <div class="partner-name text-start">
+            MBC
+          </div>
+          <img src="../../assets/img/icon/icon.png" alt="MUBAS Logo" class="partner-logo">
+        </div>
+      </div>
+
+      <!-- Partner 7 -->
+      <div class="col-md-6">
+        <div class="d-flex align-items-center justify-content-between partner-item">
+          <div class="partner-name text-start">
+            FINCOOP
+          </div>
+          <img src="../../assets/img/icon/icon.png" alt="MUBAS Logo" class="partner-logo">
+        </div>
+      </div>
+
+       <!-- Partner 8 -->
+      <div class="col-md-6">
+        <div class="d-flex align-items-center justify-content-between partner-item">
+          <div class="partner-name text-start">
+            FINCOOP
+          </div>
+          <img src="../../assets/img/icon/icon.png" alt="MUBAS Logo" class="partner-logo">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
             <div class="text-white screens footer-screen">
                 <div class="overlays overlay-footer"></div>
@@ -196,8 +355,11 @@
                                 <li class="nav-item mb-2">
                                     <a href="#award" class="nav-link p-0">Award</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item mb-2">
                                     <a href="#team" class="nav-link p-0">Team</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#partners" class="nav-link p-0">Partners</a>
                                 </li>
                             </ul>
                         </div>

@@ -1,0 +1,22 @@
+/* Custom styles for The Brand */
+
+.text-pango {
+	color: #006a39 !important;
+}
+
+.bg-pango {
+    background: #006a39 !important;
+}
+
+.bg-pango-subtle {
+    background: #006a3925 !important;
+}
+
+.bg-pango-subtle-50 {
+    background: #006a3950 !important;
+}
+
+.bg-pango-subtle-75 {
+    background: #006a3975 !important;
+}
+
